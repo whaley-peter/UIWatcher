@@ -38,7 +38,6 @@ public class UiWatchers extends UiAutomatorTestCase{
    * your own watchers and handle error logging properly for your type of tests.
    */
   public void testinstallAppWatchers(){	 
-
 	  while(true){
 		UiDevice.getInstance().registerWatcher("oppoInstall1", new UiWatcher(){
 			@Override
@@ -61,7 +60,6 @@ public class UiWatchers extends UiAutomatorTestCase{
 				return false;
 			}
 		});
-		
 		UiDevice.getInstance().registerWatcher("oppoInstall2", new UiWatcher(){
 			@Override
 			public boolean checkForCondition() {
@@ -79,24 +77,6 @@ public class UiWatchers extends UiAutomatorTestCase{
 				}
 				return false;
 			}});
-		
-//		UiDevice.getInstance().registerWatcher("oppoInstall21", new UiWatcher(){
-//			@Override
-//			public boolean checkForCondition() {
-//				//1,重新安装时的弹框按钮
-//				UiObject installbutton21 = new UiObject(new UiSelector().text("重新安装").className("android.widget.Button"));
-//				UiObject installbutton22 = new UiObject(new UiSelector().text("取消").className("android.widget.Button"));
-//				if(installbutton21.exists()){
-//					try{
-//						installbutton22.clickAndWaitForNewWindow();
-//						
-//					}catch(UiObjectNotFoundException e){
-//						Log.e(LOG_TAG, "Exception",e);
-//					}
-//				return true;
-//				}
-//				return false;
-//			}});
 		
 		UiDevice.getInstance().registerWatcher("oppoInstall3", new UiWatcher(){
 
@@ -172,12 +152,30 @@ public class UiWatchers extends UiAutomatorTestCase{
 			}
 		});
 		
+		UiDevice.getInstance().registerWatcher("vivoinstall", new UiWatcher(){
+			@Override
+			public boolean checkForCondition() {
+				//输入密码弹框
+				UiObject installbutton1 = new UiObject(new UiSelector().resourceId("vivo:id/vivo_adb_install_ok_button"));
+				if(installbutton1.exists()){
+					try{
+						//点击安装
+						installbutton1.clickAndWaitForNewWindow();
+						sleep(1000);						
+					}catch(UiObjectNotFoundException e) {
+			            Log.e(LOG_TAG, "Exception", e);
+			          }
+				return true;
+				}
+				return false;
+			}
+		});
+		
 		UiDevice.getInstance().runWatchers();
 		
 	  }
-	 
   }
-  
+
   public void registerAnrAndCrashWatchers() {
 
     UiDevice.getInstance().registerWatcher("ANR", new UiWatcher() {
