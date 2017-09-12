@@ -39,139 +39,201 @@ public class UiWatchers extends UiAutomatorTestCase{
    */
   public void testinstallAppWatchers(){	 
 	  while(true){
-		UiDevice.getInstance().registerWatcher("oppoInstall1", new UiWatcher(){
-			@Override
-			public boolean checkForCondition() {
-				//ÊäÈëÃÜÂëµ¯¿ò
-				UiObject installbutton1 = new UiObject(new UiSelector().resourceId("com.coloros.safecenter:id/verify_input"));
-				if(installbutton1.exists()){
-					try{
-						//Êä³öÕËºÅ
-						installbutton1.setText("long2000");
-						sleep(1000);
-						//ÊÕÆğ¼üÅÌ
-						UiDevice.getInstance().pressBack();
-						
-					}catch(UiObjectNotFoundException e) {
-			            Log.e(LOG_TAG, "Exception", e);
-			          }
-				return true;
-				}
-				return false;
-			}
-		});
-		UiDevice.getInstance().registerWatcher("oppoInstall2", new UiWatcher(){
-			@Override
-			public boolean checkForCondition() {
-				//1,ÊäÈëÃÜÂë½çÃæ°²×°°´Å¥
-				//2,ÖØĞÂ°²×°Ê±µÄµ¯¿ò°´Å¥
-				UiObject installbutton2 = new UiObject(new UiSelector().resourceId("android:id/button1"));
-				if(installbutton2.exists()){
-					try{
-						installbutton2.clickAndWaitForNewWindow();
-						
-					}catch(UiObjectNotFoundException e){
-						Log.e(LOG_TAG, "Exception",e);
+		try{
+			UiDevice.getInstance().registerWatcher("oppoInstall1", new UiWatcher(){
+				@Override
+				public boolean checkForCondition() {
+					//oppoå®‰è£…è¿‡ç¨‹ä¸­ï¼Œè¾“å…¥è´¦å·ã€å¯†ç å¼¹æ¡†
+					UiObject installbutton1 = new UiObject(new UiSelector().resourceId("com.coloros.safecenter:id/verify_input"));
+					if(installbutton1.exists()){
+						try{
+							//è¾“å…¥è´¦å·
+							installbutton1.setText("long2000");
+							sleep(1000);
+							//ç‚¹å‡»è¿”å›é”®ï¼Œæ”¶èµ·é”®ç›˜
+							UiDevice.getInstance().pressBack();
+							
+						}catch(UiObjectNotFoundException e) {
+				            Log.e(LOG_TAG, "Exception", e);
+				          }
+					return true;
 					}
-				return true;
+					return false;
 				}
-				return false;
-			}});
-		
-		UiDevice.getInstance().registerWatcher("oppoInstall3", new UiWatcher(){
+			});
+			UiDevice.getInstance().registerWatcher("oppoInstall2", new UiWatcher(){
+				@Override
+				public boolean checkForCondition() {
+					//1,è¾“å…¥å¯†ç åç‚¹å‡»å®‰è£…
+				
+					UiObject installbutton2 = new UiObject(new UiSelector().resourceId("android:id/button1").text("å®‰è£…"));
+					if(installbutton2.exists()){
+						try{
+							installbutton2.clickAndWaitForNewWindow();
+							
+						}catch(UiObjectNotFoundException e){
+							Log.e(LOG_TAG, "Exception",e);
+						}
+					return true;
+					}
+					return false;
+				}});
+			UiDevice.getInstance().registerWatcher("oppoInstall3", new UiWatcher(){
+				@Override
+				public boolean checkForCondition() {
+					//1,è¾“å…¥å¯†ç åç‚¹å‡»å®‰è£…
+				
+					UiObject installbutton2 = new UiObject(new UiSelector().resourceId("android:id/button1").text("é‡æ–°å®‰è£…"));
+					if(installbutton2.exists()){
+						try{
+							installbutton2.clickAndWaitForNewWindow();
+							
+						}catch(UiObjectNotFoundException e){
+							Log.e(LOG_TAG, "Exception",e);
+						}
+					return true;
+					}
+					return false;
+				}});
+			
+			UiDevice.getInstance().registerWatcher("oppoInstall4", new UiWatcher(){
 
-			@Override
-			public boolean checkForCondition() {
-				//°²×°½çÃæµÄ°²×°°´Å¥
-				UiObject installbutton3 = new UiObject(new UiSelector().resourceId("com.android.packageinstaller:id/ok_button"));
-				if(installbutton3.exists()){
-					try{
-						installbutton3.clickAndWaitForNewWindow();
-						sleep(10000);
-					}catch(UiObjectNotFoundException e){
-						Log.e(LOG_TAG, "Exception",e);
+				@Override
+				public boolean checkForCondition() {
+					//è·³è½¬ç•Œé¢åï¼Œç»§ç»­ç‚¹å‡»å®‰è£…
+					UiObject installbutton3 = new UiObject(new UiSelector().resourceId("com.android.packageinstaller:id/ok_button").text("å®‰è£…"));
+					if(installbutton3.exists()){
+						try{
+							installbutton3.clickAndWaitForNewWindow();
+						}catch(UiObjectNotFoundException e){
+							Log.e(LOG_TAG, "Exception",e);
+						}
+					return true;
 					}
-				return true;
+					return false;
 				}
-				return false;
-			}
-		});
-		UiDevice.getInstance().registerWatcher("oppoInstall4", new UiWatcher(){
+			});
+			UiDevice.getInstance().registerWatcher("oppoInstall5", new UiWatcher(){
 
-			@Override
-			public boolean checkForCondition() {
-				//°²×°Íê³É½çÃæ£¬Íê³É°´Å¥
-				UiObject installbutton4 = new UiObject(new UiSelector().resourceId("com.android.packageinstaller:id/bottom_button_one"));
-				if(installbutton4.exists()){
-					try{
-						installbutton4.clickAndWaitForNewWindow();
-					}catch(UiObjectNotFoundException e){
-						Log.e(LOG_TAG, "Exception",e);
-					}
-				return true;
-				}
-				return false;
-			}
-		});
-		
-		UiDevice.getInstance().registerWatcher("oppoInstall5", new UiWatcher(){
+				@Override
+				public boolean checkForCondition() {
+					//å®‰è£…åï¼Œç‚¹å‡»å®Œæˆ
+					UiObject installbutton4 = new UiObject(new UiSelector().resourceId("com.android.packageinstaller:id/bottom_button_one").text("å®Œæˆ"));
+					if(installbutton4.exists()){
+						try{
 
-			@Override
-			public boolean checkForCondition() {
-				//app°²×°½çÃæ£¬ÊÇ·ñ¼ÌĞø°²×°¾É°æ±¾°´Å¥
-				UiObject installbutton5 = new UiObject(new UiSelector().resourceId("com.android.packageinstaller:id/install_old_version_tip"));
-				if(installbutton5.exists()){
-					try{
-						installbutton5.clickAndWaitForNewWindow();
-						sleep(3000);
-					}catch(UiObjectNotFoundException e){
-						Log.e(LOG_TAG, "Exception",e);
+							installbutton4.clickAndWaitForNewWindow();
+						}catch(UiObjectNotFoundException e){
+							Log.e(LOG_TAG, "Exception",e);
+						}
+					return true;
 					}
-				return true;
+					return false;
 				}
-				return false;
-			}
-		});
-	
-		UiDevice.getInstance().registerWatcher("oppoInstall6", new UiWatcher(){
+			});
+			
+			UiDevice.getInstance().registerWatcher("oppoInstall6", new UiWatcher(){
 
-			@Override
-			public boolean checkForCondition() {
-				//app°²×°½çÃæ£¬¼ÌĞø°²×°°´Å¥
-				UiObject installbutton6 = new UiObject(new UiSelector().resourceId("com.android.packageinstaller:id/btn_allow_once"));
-				if(installbutton6.exists()){
-					try{
-						installbutton6.clickAndWaitForNewWindow();
-						sleep(3000);
-					}catch(UiObjectNotFoundException e){
-						Log.e(LOG_TAG, "Exception",e);
+				@Override
+				public boolean checkForCondition() {
+					////appå®‰è£…ç•Œé¢ï¼Œæ˜¯å¦ç»§ç»­å®‰è£…æ—§ç‰ˆæœ¬æŒ‰é’®
+					UiObject installbutton5 = new UiObject(new UiSelector().resourceId("com.android.packageinstaller:id/install_old_version_tip"));
+					if(installbutton5.exists()){
+						try{
+							installbutton5.clickAndWaitForNewWindow();
+							sleep(3000);
+						}catch(UiObjectNotFoundException e){
+							Log.e(LOG_TAG, "Exception",e);
+						}
+					return true;
 					}
-				return true;
+					return false;
 				}
-				return false;
-			}
-		});
+			});
 		
-		UiDevice.getInstance().registerWatcher("vivoinstall", new UiWatcher(){
-			@Override
-			public boolean checkForCondition() {
-				//ÊäÈëÃÜÂëµ¯¿ò
-				UiObject installbutton1 = new UiObject(new UiSelector().resourceId("vivo:id/vivo_adb_install_ok_button"));
-				if(installbutton1.exists()){
-					try{
-						//µã»÷°²×°
-						installbutton1.clickAndWaitForNewWindow();
-						sleep(1000);						
-					}catch(UiObjectNotFoundException e) {
-			            Log.e(LOG_TAG, "Exception", e);
-			          }
-				return true;
+			UiDevice.getInstance().registerWatcher("oppoInstall7", new UiWatcher(){
+
+				@Override
+				public boolean checkForCondition() {
+					////appå®‰è£…ç•Œé¢ï¼Œç»§ç»­å®‰è£…æŒ‰é’®
+					UiObject installbutton6 = new UiObject(new UiSelector().resourceId("com.android.packageinstaller:id/btn_allow_once"));
+					if(installbutton6.exists()){
+						try{
+							installbutton6.clickAndWaitForNewWindow();
+							sleep(3000);
+						}catch(UiObjectNotFoundException e){
+							Log.e(LOG_TAG, "Exception",e);
+						}
+					return true;
+					}
+					return false;
 				}
-				return false;
-			}
-		});
-		
-		UiDevice.getInstance().runWatchers();
+			});
+			UiDevice.getInstance().registerWatcher("s7Install", new UiWatcher(){
+
+				@Override
+				public boolean checkForCondition() {
+					//ï¿½ï¿½ï¿½ï¿½s7ï¿½ï¿½×°ï¿½ï¿½É£ï¿½ï¿½ï¿½ï¿½È·ï¿½Ï°ï¿½Å¥
+					UiObject installbutton6 = new UiObject(new UiSelector().resourceId("com.android.packageinstaller:id/confirm_button"));
+					if(installbutton6.exists()){
+						try{
+							installbutton6.clickAndWaitForNewWindow();
+							sleep(3000);
+						}catch(UiObjectNotFoundException e){
+							Log.e(LOG_TAG, "Exception",e);
+						}
+					return true;
+					}
+					return false;
+				}
+			});
+			//å¤„ç†vivo X7å®‰è£…è¿‡ç¨‹ä¸­å¼¹æ¡†
+			UiDevice.getInstance().registerWatcher("vivoX7install", new UiWatcher(){
+				@Override
+				public boolean checkForCondition() {
+					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ëµ¯ï¿½ï¿½
+					UiObject installbutton1 = new UiObject(new UiSelector().resourceId("vivo:id/vivo_adb_install_ok_button").text("å®‰è£…"));
+					if(installbutton1.exists()){
+						try{
+							//ï¿½ï¿½ï¿½ï¿½ï¿½×°
+							installbutton1.clickAndWaitForNewWindow();
+							sleep(1000);						
+						}catch(UiObjectNotFoundException e) {
+				            Log.e(LOG_TAG, "Exception", e);
+				          }
+					return true;
+					}
+					return false;
+				}
+			});
+			
+			//å¤„ç†å°ç±³5å®‰è£…è¿‡ç¨‹ä¸­å¼¹æ¡†
+			UiDevice.getInstance().registerWatcher("Mi5install", new UiWatcher(){
+				@Override
+				public boolean checkForCondition() {
+					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ëµ¯ï¿½ï¿½
+					UiObject installbutton1 = new UiObject(new UiSelector().resourceId("android:id/button2").text("ç»§ç»­å®‰è£…"));
+					if(installbutton1.exists()){
+						try{
+							//ï¿½ï¿½ï¿½ï¿½ï¿½×°
+							installbutton1.clickAndWaitForNewWindow();
+							sleep(1000);						
+						}catch(UiObjectNotFoundException e) {
+				            Log.e(LOG_TAG, "Exception", e);
+				          }
+					return true;
+					}
+					return false;
+				}
+			});
+			
+			UiDevice.getInstance().runWatchers();
+		}catch(Exception e){
+			Log.e(LOG_TAG, "Exception", e);
+		}finally{
+			UiDevice.getInstance().resetWatcherTriggers();
+		}
+
 		
 	  }
   }
